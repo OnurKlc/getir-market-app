@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Logo from '@/assets/Logo.svg'
+import { BasketIcon, Logo } from '@/assets'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,10 +11,24 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
+const Basket = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  width: 120px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.primaryDark};
+`
+
 export default function Header() {
   return (
     <Wrapper>
-      <img src={Logo} alt='logo' />
+      <img src={Logo} alt='logo' className='ml-auto' />
+      <Basket>
+        <img src={BasketIcon} alt='basket' />
+        <span className='text-white ml-2'>&#8378; 39,97</span>
+      </Basket>
     </Wrapper>
   )
 }
