@@ -1,29 +1,38 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { CheckIcon } from '@assets'
+import { ContainerBox, If } from '@components/shared'
+import { setOrderData } from '@store/products/productSlice'
 import styled from 'styled-components'
-
-import { ContainerBox, If } from '../shared'
 
 const sortingList = [
   {
     text: 'Price low to high',
     selected: false,
-    id: 1
+    id: 1,
+    sortKey: 'price',
+    order: 'asc'
   },
   {
     text: 'Price high to low',
     selected: false,
-    id: 2
+    id: 2,
+    sortKey: 'price',
+    order: 'desc'
   },
   {
     text: 'New to old',
     selected: false,
-    id: 3
+    id: 3,
+    sortKey: 'added',
+    order: 'asc'
   },
   {
     text: 'Old to new',
     selected: false,
-    id: 4
+    id: 4,
+    sortKey: 'added',
+    order: 'desc'
   }
 ]
 
@@ -40,11 +49,20 @@ const Circle = styled.span`
 `
 
 export default function Sorting() {
+  const dispatch = useDispatch()
   const [list, setList] = useState(sortingList)
 
   const onItemClick = (id) => () => {
-    sortingList.forEach((item) => (item.selected = item.id === id))
+    const orderData = {}
+    sortingList.forEach((item) => {
+      item.selected = item.id === id
+      if (item.id === id) {
+        orderData.sort = item.sortKey
+        orderData.order = item.order
+      }
+    })
     setList([...sortingList])
+    dispatch(setOrderData(orderData))
   }
 
   return (

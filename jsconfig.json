@@ -5,7 +5,8 @@
       "root": ["."],
       "@assets": ["src/assets"],
       "@components": ["src/components"],
-      "@data": ["src/data"]
+      "@data": ["src/data"],
+      "@store": ["src/store"]
     }
   }
 }

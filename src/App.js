@@ -1,4 +1,8 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Basket, Brands, Header, Products, Sorting, Tags } from '@components'
+import { setAllProductsData } from '@store/products/productSlice'
+import axios from 'axios'
 import tailwindConfig from 'root/tailwind.config.js'
 import styled, { ThemeProvider } from 'styled-components'
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -19,6 +23,17 @@ const Layout = styled.div`
 `
 
 function App() {
+  const dispatch = useDispatch()
+  const getAllProducts = () => {
+    axios.get('http://localhost:3004/items').then((resp) => {
+      dispatch(setAllProductsData(resp.data))
+    })
+  }
+
+  useEffect(() => {
+    getAllProducts()
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
       <AppWrapper>

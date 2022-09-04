@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setProductsData } from '@store/products/productSlice'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -12,23 +14,25 @@ const List = styled.div`
 `
 
 export default function Products() {
+  const dispatch = useDispatch()
+  const { products, orderData } = useSelector((state) => state.productState)
   const [page, setPage] = useState(1)
-  const [limit] = useState(16)
-  const [products, setProducts] = useState([])
   const [total, setTotal] = useState(0)
 
   const getProducts = () => {
     axios
-      .get(`http://localhost:3004/items?_page=${page}&_limit=${limit}`)
+      .get(
+        `http://localhost:3004/items?_page=${page}&_limit=16&_sort=${orderData.sort}&_order=${orderData.order}`
+      )
       .then((resp) => {
-        setProducts(resp.data)
+        dispatch(setProductsData(resp.data))
         setTotal(resp.headers['x-total-count'])
       })
   }
 
   useEffect(() => {
     getProducts()
-  }, [page])
+  }, [page, orderData])
 
   const onPageChange = (_page) => () => {
     setPage(_page)
