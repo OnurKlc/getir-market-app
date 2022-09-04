@@ -4,7 +4,7 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 10px;
+  gap: 30px;
 `
 
 export const Prev = styled.div`
@@ -24,10 +24,10 @@ export const Prev = styled.div`
 export const Numbers = styled.div`
   display: inline-flex;
   align-items: center;
-  width: 300px;
+  flex-grow: 1;
   height: 100px;
-  white-space: nowrap;
   overflow: scroll;
+  text-overflow: ellipsis;
 `
 
 export const Number = styled.span`

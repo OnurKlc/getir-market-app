@@ -44,8 +44,8 @@ export default function Products() {
   const [total, setTotal] = useState(0)
   const [itemType, setItemType] = useState()
 
-  const getProducts = () => {
-    let url = `http://localhost:3004/items?_page=${page}&_limit=16`
+  const getProducts = (_page = 1) => {
+    let url = `http://localhost:3004/items?_page=${_page}&_limit=16`
     if (orderData.sort) url += `&_sort=${orderData.sort}`
     if (orderData.order) url += `&_order=${orderData.order}`
     if (brandFilters.length) url += `&manufacturer=${brandFilters.join(',')}`
@@ -59,14 +59,16 @@ export default function Products() {
 
   useEffect(() => {
     getProducts()
-  }, [page, orderData, tagFilters, brandFilters, itemType])
+    setPage(1)
+  }, [orderData, tagFilters, brandFilters, itemType])
 
   const onPageChange = (_page) => () => {
     setPage(_page)
+    getProducts(_page)
   }
 
   return (
-    <div className='flex-1'>
+    <div className='flex-1 max-w-full overflow-hidden'>
       <p className='mt-8 mb-4 font-light'>Products</p>
       <div className='mb-4'>
         <ItemTypeButton name={ItemTypes.MUG} {...{ itemType, setItemType }} />

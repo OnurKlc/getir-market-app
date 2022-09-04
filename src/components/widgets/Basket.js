@@ -54,7 +54,7 @@ export default function Basket() {
   if (!basketProducts.length) return null
 
   return (
-    <ContainerBox className='border-primary border-8 mt-8 h-fit'>
+    <ContainerBox className='border-primary border-8 mt-8 h-fit self-end md:self-start'>
       {basketProducts.map(({ added, name, price, basketAmount }) => (
         <ProductListItem key={added}>
           <div>
