@@ -61,11 +61,15 @@ export const productsSlice = createSlice({
         .toFixed(2)
     },
     decreaseBasketAmount: (state, { payload }) => {
-      state.basketProducts.forEach((product) => {
-        if (product.added === payload) {
-          product.basketAmount -= 1
-        }
-      })
+      const item = state.basketProducts.find(
+        (product) => product.added === payload
+      )
+      if (item.basketAmount === 1) {
+        const index = state.basketProducts.indexOf(item)
+        state.basketProducts.splice(index, 1)
+      } else {
+        item.basketAmount -= 1
+      }
       state.totalPrice = state.basketProducts
         .reduce(
           (total, product) => product.price * product.basketAmount + total,

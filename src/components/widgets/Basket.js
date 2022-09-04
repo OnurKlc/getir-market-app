@@ -62,12 +62,7 @@ export default function Basket() {
             <p className='text-primary'>&#8378; {price}</p>
           </div>
           <ProductAmount>
-            <button
-              disabled={basketAmount === 1}
-              onClick={() => decreaseAmount(added)}
-            >
-              -
-            </button>
+            <button onClick={() => decreaseAmount(added)}>-</button>
             <span className='text-white bg-primary h-[32px] w-[32px] flex items-center justify-center'>
               {basketAmount}
             </span>
