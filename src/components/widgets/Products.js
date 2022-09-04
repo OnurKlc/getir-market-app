@@ -9,9 +9,31 @@ import { Pagination, ProductCard } from '../shared'
 const List = styled.div`
   display: grid;
   gap: 30px 10px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
 `
+
+const ItemTypes = {
+  MUG: 'mug',
+  SHIRT: 'shirt'
+}
+
+const ItemTypeButton = ({ name, itemType, setItemType }) => (
+  <button
+    onClick={() => {
+      if (itemType !== name) setItemType(name)
+      if (itemType === name) setItemType()
+    }}
+    className={
+      'px-4 py-2 mr-3 text-sm rounded-sm ' +
+      (itemType === name
+        ? 'text-white bg-primary'
+        : 'bg-primaryLight text-primary')
+    }
+  >
+    {name}
+  </button>
+)
 
 export default function Products() {
   const dispatch = useDispatch()
@@ -20,6 +42,7 @@ export default function Products() {
   )
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
+  const [itemType, setItemType] = useState()
 
   const getProducts = () => {
     let url = `http://localhost:3004/items?_page=${page}&_limit=16`
@@ -27,6 +50,7 @@ export default function Products() {
     if (orderData.order) url += `&_order=${orderData.order}`
     if (brandFilters.length) url += `&manufacturer=${brandFilters.join(',')}`
     if (tagFilters.length) url += `&tags_like=${tagFilters.join(',')}`
+    if (itemType) url += `&itemType=${itemType}`
     axios.get(url).then((resp) => {
       dispatch(setProductsData(resp.data))
       setTotal(resp.headers['x-total-count'])
@@ -35,7 +59,7 @@ export default function Products() {
 
   useEffect(() => {
     getProducts()
-  }, [page, orderData, tagFilters, brandFilters])
+  }, [page, orderData, tagFilters, brandFilters, itemType])
 
   const onPageChange = (_page) => () => {
     setPage(_page)
@@ -45,27 +69,13 @@ export default function Products() {
     <div className='flex-1'>
       <p className='mt-8 mb-4 font-light'>Products</p>
       <div className='mb-4'>
-        {tagFilters.map((tag) => (
-          <span
-            key={tag}
-            className='bg-primary px-4 py-2 text-white mr-3 text-sm rounded-sm'
-          >
-            {tag}
-          </span>
-        ))}
-        {brandFilters.map((tag) => (
-          <span
-            key={tag}
-            className='bg-primaryLight px-4 py-2 text-primary mr-3 text-sm rounded-sm'
-          >
-            {tag}
-          </span>
-        ))}
+        <ItemTypeButton name={ItemTypes.MUG} {...{ itemType, setItemType }} />
+        <ItemTypeButton name={ItemTypes.SHIRT} {...{ itemType, setItemType }} />
       </div>
       <div className='bg-white p-8'>
         <List>
-          {products.map(({ price, name, added }) => (
-            <ProductCard {...{ price, name }} key={added} />
+          {products.map((product) => (
+            <ProductCard {...{ product }} key={product.added} />
           ))}
         </List>
         <Pagination {...{ page, total, onPageChange }} />

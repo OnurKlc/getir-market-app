@@ -1,14 +1,36 @@
-import { ProductImage } from './styles'
+import { useDispatch } from 'react-redux'
+import { MugImg, ShirtImg } from '@assets'
+import { addToBasketProducts } from '@store/products/productSlice'
 
-export default function ProductCard({ price, name }) {
+import { ProductImageWrapper } from './styles'
+
+export default function ProductCard({ product }) {
+  const dispatch = useDispatch()
+  const { price, name, itemType } = product
+
+  const addProduct = () => {
+    const tempProduct = { ...product }
+    tempProduct.basketAmount = 1
+    dispatch(addToBasketProducts(tempProduct))
+  }
+
   return (
-    <div className='flex-col gap-4 w-[250px]'>
-      <ProductImage className='p-4 rounded-md'>
-        <div className='bg-gray w-full h-full min-h-[200px]' />
-      </ProductImage>
+    <div className='flex flex-col gap-4 w-[200px]'>
+      <ProductImageWrapper className='p-4 rounded-md'>
+        <img
+          src={itemType === 'mug' ? MugImg : ShirtImg}
+          className='bg-gray w-full h-full min-h-[200px]'
+          alt={itemType}
+        />
+      </ProductImageWrapper>
       <div className='text-primary font-bold'>&#8378; {price}</div>
-      <div>{name}</div>
-      <button className='bg-primary text-white w-full rounded-md'>Add</button>
+      <div className='h-[48px]'>{name}</div>
+      <button
+        onClick={addProduct}
+        className='bg-primary text-white w-full rounded-md py-1'
+      >
+        Add
+      </button>
     </div>
   )
 }

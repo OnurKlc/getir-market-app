@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { BasketIcon, Logo } from '@assets'
 import styled from 'styled-components'
 
@@ -21,12 +22,14 @@ const Basket = styled.div`
 `
 
 export default function Header() {
+  const { totalPrice } = useSelector((state) => state.productState)
+
   return (
     <Wrapper>
       <img src={Logo} alt='logo' className='ml-auto' />
       <Basket>
         <img src={BasketIcon} alt='basket' />
-        <span className='text-white ml-2'>&#8378; 39,97</span>
+        <span className='text-white ml-2'>&#8378; {totalPrice}</span>
       </Basket>
     </Wrapper>
   )

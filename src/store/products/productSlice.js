@@ -6,18 +6,20 @@ const initialState = {
   products: [],
   orderData: {},
   tagFilters: [],
-  brandFilters: []
+  brandFilters: [],
+  basketProducts: [],
+  totalPrice: 0
 }
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setProductsData: (state, action) => {
-      state.products = action.payload
+    setProductsData: (state, { payload }) => {
+      state.products = payload
     },
-    setAllProductsData: (state, action) => {
-      action.payload.forEach((product) => {
+    setAllProductsData: (state, { payload }) => {
+      payload.forEach((product) => {
         state.brands[product.manufacturer] =
           (state.brands[product.manufacturer] || 0) + 1
         product.tags.forEach((tag) => {
@@ -25,25 +27,64 @@ export const productsSlice = createSlice({
         })
       })
     },
-    setOrderData: (state, action) => {
-      state.orderData = { ...action.payload }
+    setOrderData: (state, { payload }) => {
+      state.orderData = { ...payload }
     },
-    setTagFilter: (state, action) => {
-      if (!state.tagFilters.includes(action.payload)) {
-        state.tagFilters.push(action.payload)
+    setTagFilter: (state, { payload }) => {
+      if (!state.tagFilters.includes(payload)) {
+        state.tagFilters.push(payload)
       } else {
-        const index = state.tagFilters.indexOf(action.payload)
+        const index = state.tagFilters.indexOf(payload)
         state.tagFilters.splice(index, 1)
       }
     },
-    setBrandFilter: (state, action) => {
-      console.log(action.payload)
-      if (!state.brandFilters.includes(action.payload)) {
-        state.brandFilters.push(action.payload)
+    setBrandFilter: (state, { payload }) => {
+      if (!state.brandFilters.includes(payload)) {
+        state.brandFilters.push(payload)
       } else {
-        const index = state.brandFilters.indexOf(action.payload)
+        const index = state.brandFilters.indexOf(payload)
         state.brandFilters.splice(index, 1)
       }
+    },
+    addToBasketProducts: (state, { payload }) => {
+      const isAlreadyAdded = state.basketProducts.findIndex(
+        (basketProduct) => basketProduct.added === payload.added
+      )
+      if (isAlreadyAdded !== -1) return
+
+      state.basketProducts.push(payload)
+      state.totalPrice = state.basketProducts
+        .reduce(
+          (total, product) => product.price * product.basketAmount + total,
+          0
+        )
+        .toFixed(2)
+    },
+    decreaseBasketAmount: (state, { payload }) => {
+      state.basketProducts.forEach((product) => {
+        if (product.added === payload) {
+          product.basketAmount -= 1
+        }
+      })
+      state.totalPrice = state.basketProducts
+        .reduce(
+          (total, product) => product.price * product.basketAmount + total,
+          0
+        )
+        .toFixed(2)
+    },
+    increaseBasketAmount: (state, { payload }) => {
+      state.basketProducts.forEach((product) => {
+        if (product.added === payload) {
+          product.basketAmount += 1
+        }
+      })
+      state.totalPrice = state.basketProducts
+        .reduce(
+          (total, product) => product.price * product.basketAmount + total,
+          0
+        )
+        .toFixed(2)
     }
   }
 })
@@ -53,7 +94,10 @@ export const {
   setAllProductsData,
   setOrderData,
   setTagFilter,
-  setBrandFilter
+  setBrandFilter,
+  addToBasketProducts,
+  decreaseBasketAmount,
+  increaseBasketAmount
 } = productsSlice.actions
 
 export default productsSlice.reducer
