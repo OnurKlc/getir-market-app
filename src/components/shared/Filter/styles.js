@@ -14,6 +14,11 @@ export const CheckboxGroup = styled.div`
   overflow: auto;
 `
 
+export const FilterItem = styled.div`
+  display: block;
+  display: ${({ hide }) => hide && 'none'};
+`
+
 export const Checkbox = styled.input`
   margin-right: 1rem;
 `
