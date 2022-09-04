@@ -7,8 +7,8 @@ const Wrapper = styled.div`
   height: 75px;
   background-color: ${({ theme }) => theme.colors.primary};
   display: flex;
-  justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 const Basket = styled.div`
@@ -19,15 +19,18 @@ const Basket = styled.div`
   width: 120px;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.primaryDark};
+  position: absolute;
+  top: 0;
+  bottom: 0;
 `
 
 export default function Header() {
   const { totalPrice } = useSelector((state) => state.productState)
 
   return (
-    <Wrapper>
-      <img src={Logo} alt='logo' className='ml-auto' />
-      <Basket>
+    <Wrapper className='sm:justify-center'>
+      <img src={Logo} alt='logo' className='w-20 sm:w-[142px] ml-6 sm:ml-0' />
+      <Basket className='right-6 md:right-8 lg:right-12'>
         <img src={BasketIcon} alt='basket' />
         <span className='text-white ml-2'>&#8378; {totalPrice}</span>
       </Basket>
