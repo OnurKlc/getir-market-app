@@ -1,8 +1,4 @@
-import styled from 'styled-components'
-
-const ProductImage = styled.div`
-  border: 1px solid #f3f0fe;
-`
+import { ProductImage } from './styles'
 
 export default function ProductCard({ price, name }) {
   return (

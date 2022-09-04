@@ -1,14 +1,6 @@
-import styled from 'styled-components'
+import { Box } from './styles'
 
-import If from './If'
-
-const Box = styled.div`
-  min-height: 274px;
-  min-width: 290px;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-`
+import If from '../If/If'
 
 export default function ContainerBox({ children, label, className }) {
   return (

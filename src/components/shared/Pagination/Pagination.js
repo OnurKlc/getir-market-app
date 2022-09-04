@@ -3,7 +3,7 @@ import { ArrowRight } from '@assets'
 
 import { Next, Number, Numbers, PaginationContainer, Prev } from './styles'
 
-import If from '../If'
+import If from '../If/If'
 
 const PaginationNumbersGenerator = ({ count, page, onPageChange }) => {
   return (
