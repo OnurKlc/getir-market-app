@@ -4,14 +4,14 @@ const ProductImage = styled.div`
   border: 1px solid #f3f0fe;
 `
 
-export default function ProductCard({ price, title }) {
+export default function ProductCard({ price, name }) {
   return (
-    <div className='flex-col gap-4'>
+    <div className='flex-col gap-4 w-[250px]'>
       <ProductImage className='p-4 rounded-md'>
-        <img src='' alt='' className='bg-gray w-full h-full' />
+        <div className='bg-gray w-full h-full min-h-[200px]' />
       </ProductImage>
       <div className='text-primary font-bold'>&#8378; {price}</div>
-      <div>{title}</div>
+      <div>{name}</div>
       <button className='bg-primary text-white w-full rounded-md'>Add</button>
     </div>
   )

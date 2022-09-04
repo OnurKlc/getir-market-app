@@ -1,9 +1,9 @@
-import { ContainerBox } from './shared'
+import { ContainerBox, Filter } from '../shared'
 
 export default function Brands() {
   return (
     <ContainerBox label='Brands'>
-      <div />
+      <Filter component='brand' />
     </ContainerBox>
   )
 }

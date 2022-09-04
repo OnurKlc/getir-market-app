@@ -20,7 +20,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:json/recommended"
   ],
   "plugins": ["simple-import-sort"],
   "rules": {
@@ -43,7 +44,7 @@
       "ignoreTrailingComments": true,
       "ignoreRegExpLiterals": true
     }],
-    "no-console": "error",
+    "no-console": "warn",
     "no-duplicate-imports": "error",
     "no-empty": ["error", { "allowEmptyCatch": true }],
     "no-multiple-empty-lines": [1, { "max": 1 }],

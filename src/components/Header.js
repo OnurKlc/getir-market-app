@@ -1,6 +1,5 @@
+import { BasketIcon, Logo } from '@assets'
 import styled from 'styled-components'
-
-import { BasketIcon, Logo } from '@/assets'
 
 const Wrapper = styled.div`
   width: 100%;

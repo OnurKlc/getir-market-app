@@ -1,9 +1,9 @@
-import { ContainerBox } from './shared'
+import { ContainerBox, Filter } from '../shared'
 
 export default function Tags() {
   return (
     <ContainerBox label='Tags'>
-      <div />
+      <Filter component='tag' />
     </ContainerBox>
   )
 }

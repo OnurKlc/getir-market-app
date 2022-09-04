@@ -1,8 +1,8 @@
-import Basket from './Basket'
-import Brands from './Brands'
+import Basket from './widgets/Basket'
+import Brands from './widgets/Brands'
+import Products from './widgets/Products'
+import Sorting from './widgets/Sorting'
+import Tags from './widgets/Tags'
 import Header from './Header'
-import Products from './Products'
-import Sorting from './Sorting'
-import Tags from './Tags'
 
 export { Basket, Brands, Header, Products, Sorting, Tags }

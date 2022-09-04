@@ -1,8 +1,7 @@
+import { Basket, Brands, Header, Products, Sorting, Tags } from '@components'
 import tailwindConfig from 'root/tailwind.config.js'
 import styled, { ThemeProvider } from 'styled-components'
 import resolveConfig from 'tailwindcss/resolveConfig'
-
-import { Basket, Brands, Header, Products, Sorting, Tags } from '@/components'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -10,6 +9,7 @@ const AppWrapper = styled.main`
   min-height: 100vh;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.bgColor};
+  padding-bottom: 80px;
 `
 
 const Layout = styled.div`
