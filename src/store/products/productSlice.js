@@ -4,7 +4,9 @@ const initialState = {
   tags: {},
   brands: {},
   products: [],
-  orderData: {}
+  orderData: {},
+  tagFilters: [],
+  brandFilters: []
 }
 
 export const productsSlice = createSlice({
@@ -25,11 +27,33 @@ export const productsSlice = createSlice({
     },
     setOrderData: (state, action) => {
       state.orderData = { ...action.payload }
+    },
+    setTagFilter: (state, action) => {
+      if (!state.tagFilters.includes(action.payload)) {
+        state.tagFilters.push(action.payload)
+      } else {
+        const index = state.tagFilters.indexOf(action.payload)
+        state.tagFilters.splice(index, 1)
+      }
+    },
+    setBrandFilter: (state, action) => {
+      console.log(action.payload)
+      if (!state.brandFilters.includes(action.payload)) {
+        state.brandFilters.push(action.payload)
+      } else {
+        const index = state.brandFilters.indexOf(action.payload)
+        state.brandFilters.splice(index, 1)
+      }
     }
   }
 })
 
-export const { setProductsData, setAllProductsData, setOrderData } =
-  productsSlice.actions
+export const {
+  setProductsData,
+  setAllProductsData,
+  setOrderData,
+  setTagFilter,
+  setBrandFilter
+} = productsSlice.actions
 
 export default productsSlice.reducer
