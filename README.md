@@ -4,6 +4,11 @@ This project is a sample market app. It is initiated with CRA.
 
 It provides a default implementation of React functional components.
 
+Before running the application, first you need to ensure the followings are installed on your system:
+
+- Node
+- json-server
+
 ## Project Dependencies
 
 **@reduxjs/toolkit** - Helps managing the global state with a certain convention of writing Redux.
@@ -12,6 +17,7 @@ It provides a default implementation of React functional components.
 Helps running the app in the development mode and running the json-server in a single command.
 
 **json-server** - Creates demo REST webservice with a JSON file.
+You need to install the package to your system globally.
 
 **styled-components** - Helps to create component based and semantically meaningful styles.
 
