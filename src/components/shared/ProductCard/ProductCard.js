@@ -1,3 +1,9 @@
+/**
+ *
+ * @param product: Object
+ *
+ */
+
 import { useDispatch } from 'react-redux'
 import { MugImg, ShirtImg } from '@assets'
 import { addToBasketProducts } from '@store/products/productSlice'

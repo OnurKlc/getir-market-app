@@ -1,3 +1,11 @@
+/**
+ *
+ * @param count: Number
+ * @param page: Number
+ * @param onPageChange: Function
+ *
+ */
+
 import { useMemo } from 'react'
 import { ArrowRight } from '@assets'
 

@@ -1,6 +1,13 @@
-import { Box } from './styles'
+/**
+ *
+ * @param label: String
+ * @param className: String
+ *
+ */
 
-import If from '../If/If'
+import { If } from '@components/shared'
+
+import { Box } from './styles'
 
 export default function ContainerBox({ children, label, className }) {
   return (

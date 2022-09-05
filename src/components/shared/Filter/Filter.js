@@ -1,3 +1,10 @@
+/**
+ *
+ * @param component: String
+ * @param data: Object
+ *
+ */
+
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setBrandFilter, setTagFilter } from '@store/products/productSlice'
