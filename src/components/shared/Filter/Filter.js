@@ -7,7 +7,7 @@
 
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setBrandFilter, setTagFilter } from '@store/products/productSlice'
+import { setBrandFilter, setTagFilter } from '@store/products'
 
 import {
   Checkbox,
@@ -33,6 +33,7 @@ export default function Filter({ component, data }) {
   return (
     <div>
       <SearchArea
+        data-testid={`${component}-search-field`}
         placeholder={`Search ${component}`}
         onChange={onInputChange}
       />

@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "amd": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -23,7 +24,7 @@
     "plugin:prettier/recommended",
     "plugin:json/recommended"
   ],
-  "plugins": ["simple-import-sort"],
+  "plugins": ["simple-import-sort", "testing-library"],
   "rules": {
     "arrow-spacing": "error",
     "arrow-parens": ["error", "always"],

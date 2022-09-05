@@ -46,6 +46,7 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-testing-library": "^5.6.1",
     "prettier": "2.7.1",
     "react-app-alias": "^2.2.1",
     "react-app-rewired": "^2.2.1",
@@ -53,5 +54,12 @@
   },
   "overrides": {
     "eslint": "8.22.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@assets(.*)$": "<rootDir>/src/assets",
+      "^@data(.*)$": "<rootDir>/src/data"
+    }
   }
 }

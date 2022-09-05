@@ -7,11 +7,10 @@ export const PaginationContainer = styled.div`
   gap: 30px;
 `
 
-export const Prev = styled.div`
+export const Prev = styled.button`
   display: flex;
-  cursor: pointer;
 
-  &:hover {
+  &:hover:not[disabled] {
     color: ${({ theme: { colors } }) => colors.primary};
   }
 
@@ -49,15 +48,14 @@ export const Number = styled.span`
     `}
 `
 
-export const Next = styled.div`
+export const Next = styled.button`
   display: flex;
-  cursor: pointer;
 
   img {
     margin-left: 10px;
   }
 
-  &:hover {
+  &:hover:not[disabled] {
     color: ${({ theme: { colors } }) => colors.primary};
   }
 `

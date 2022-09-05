@@ -1,8 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  decreaseBasketAmount,
-  increaseBasketAmount
-} from '@store/products/productSlice'
+import { decreaseBasketAmount, increaseBasketAmount } from '@store/products'
 import styled from 'styled-components'
 
 import { ContainerBox } from '../shared'
@@ -54,7 +51,10 @@ export default function Basket() {
   if (!basketProducts.length) return null
 
   return (
-    <ContainerBox className='border-primary border-8 mt-8 h-fit self-end md:self-start'>
+    <ContainerBox
+      data-testid='basket-widget'
+      className='border-primary border-8 mt-8 h-fit self-end md:self-start'
+    >
       {basketProducts.map(({ added, name, price, basketAmount }) => (
         <ProductListItem key={added}>
           <div>

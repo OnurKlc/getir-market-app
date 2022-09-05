@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Basket, Brands, Header, Products, Sorting, Tags } from '@components'
-import { setAllProductsData } from '@store/products/productSlice'
+import { setAllProductsData } from '@store/products'
 import axios from 'axios'
 import tailwindConfig from 'root/tailwind.config.js'
 import styled, { css, ThemeProvider } from 'styled-components'

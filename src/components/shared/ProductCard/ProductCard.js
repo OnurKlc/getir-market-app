@@ -6,7 +6,7 @@
 
 import { useDispatch } from 'react-redux'
 import { MugImg, ShirtImg } from '@assets'
-import { addToBasketProducts } from '@store/products/productSlice'
+import { addToBasketProducts } from '@store/products'
 
 import { ProductImageWrapper } from './styles'
 

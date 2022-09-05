@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setProductsData } from '@store/products/productSlice'
+import { setProductsData } from '@store/products'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -75,7 +75,7 @@ export default function Products() {
         <ItemTypeButton name={ItemTypes.SHIRT} {...{ itemType, setItemType }} />
       </div>
       <div className='bg-white p-8'>
-        <List>
+        <List data-testid='product-list'>
           {products.map((product) => (
             <ProductCard {...{ product }} key={product.added} />
           ))}

@@ -39,12 +39,12 @@ export default function Pagination({ total, page, onPageChange }) {
 
   return (
     <PaginationContainer>
-      <Prev>
+      <Prev onClick={onPageChange(page - 1)} disabled={page === 1}>
         <img src={ArrowRight} alt='Arrow Right' />
         <div>Prev</div>
       </Prev>
       <PaginationNumbersGenerator {...{ count, page, onPageChange }} />
-      <Next>
+      <Next onClick={onPageChange(page + 1)}>
         <div>Next</div>
         <img src={ArrowRight} alt='Arrow Right' />
       </Next>

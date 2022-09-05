@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { CheckIcon } from '@assets'
 import { ContainerBox, If } from '@components/shared'
-import { setOrderData } from '@store/products/productSlice'
+import { setOrderData } from '@store/products'
 import styled from 'styled-components'
 
 const sortingList = [
@@ -72,10 +72,16 @@ export default function Sorting() {
           key={text}
           className='flex gap-3 mt-4 cursor-pointer'
           onClick={onItemClick(id)}
+          data-testid='checkbox-element'
         >
           <Circle {...{ selected }}>
             <If condition={selected}>
-              <img src={CheckIcon} alt='check' className='w-[10px]' />
+              <img
+                src={CheckIcon}
+                alt='check'
+                className='w-[10px]'
+                data-testid='check-icon'
+              />
             </If>
           </Circle>
           <p>{text}</p>
