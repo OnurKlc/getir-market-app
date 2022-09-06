@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Basket, Brands, Header, Products, Sorting, Tags } from '@components'
-import { setAllProductsData } from '@store/products'
 import axios from 'axios'
-import tailwindConfig from 'root/tailwind.config.js'
+import { Basket, Brands, Header, Products, Sorting, Tags } from 'components'
+import { setAllProductsData } from 'store/products'
 import { ThemeProvider } from 'styled-components'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
 import { AppWrapper, Layout, Mask, Sidebar, SidebarTrigger } from './AppStyles'
 
-const { theme } = resolveConfig(tailwindConfig)
+const { theme } = resolveConfig({
+  content: ['./src/**/*.{html,js}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1EA4CE',
+        primaryDark: '#147594',
+        primaryLight: '#F2F0FD',
+        bgColor: '#FAFAFA',
+        gray: '#C4C4C4',
+        lightGray: '#F4F4F4'
+      }
+    }
+  },
+  plugins: []
+})
 
 function App() {
   const dispatch = useDispatch()

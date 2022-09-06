@@ -7,7 +7,7 @@
 
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setBrandFilter, setTagFilter } from '@store/products'
+import { setBrandFilter, setTagFilter } from 'store/products'
 
 import {
   Checkbox,

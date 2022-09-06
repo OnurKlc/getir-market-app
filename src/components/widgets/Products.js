@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setProductsData } from '@store/products'
 import axios from 'axios'
+import { setProductsData } from 'store/products'
 import styled from 'styled-components'
 
 import { Pagination, ProductCard } from '../shared'

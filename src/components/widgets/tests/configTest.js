@@ -1,8 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { store } from '@store/store'
 import { render } from '@testing-library/react'
 import tailwindConfig from 'root/tailwind.config.js'
+import { store } from 'store/store'
 import { ThemeProvider } from 'styled-components'
 import resolveConfig from 'tailwindcss/resolveConfig'
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { BasketIcon, Logo } from '@assets'
+import { BasketIcon, Logo } from 'assets'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`

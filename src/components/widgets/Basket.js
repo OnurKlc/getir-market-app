@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { decreaseBasketAmount, increaseBasketAmount } from '@store/products'
+import { decreaseBasketAmount, increaseBasketAmount } from 'store/products'
 import styled from 'styled-components'
 
 import { ContainerBox } from '../shared'

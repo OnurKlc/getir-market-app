@@ -5,7 +5,7 @@
  *
  */
 
-import { If } from '@components/shared'
+import { If } from 'components/shared'
 
 import { Box } from './styles'
 

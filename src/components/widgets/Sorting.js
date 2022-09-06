@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { CheckIcon } from '@assets'
-import { ContainerBox, If } from '@components/shared'
-import { setOrderData } from '@store/products'
+import { CheckIcon } from 'assets'
+import { ContainerBox, If } from 'components/shared'
+import { setOrderData } from 'store/products'
 import styled from 'styled-components'
 
 const sortingList = [

@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useMemo } from 'react'
-import { ArrowRight } from '@assets'
+import { ArrowRight } from 'assets'
 
 import { Next, Number, Numbers, PaginationContainer, Prev } from './styles'
 
@@ -15,7 +15,7 @@ const PaginationNumbersGenerator = ({ count, page, onPageChange }) => {
   const numberArray = useMemo(() => [...Array(count).keys()], [count])
 
   useEffect(() => {
-    document.getElementById('activeElement').scrollIntoView()
+    if (page !== 1) document.getElementById('activeElement').scrollIntoView()
   }, [page])
 
   return (

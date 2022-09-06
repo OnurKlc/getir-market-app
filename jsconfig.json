@@ -1,12 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "root": ["."],
-      "@assets": ["src/assets"],
-      "@components": ["src/components"],
-      "@data": ["src/data"],
-      "@store": ["src/store"]
-    }
-  }
+    "baseUrl": "src"
+  },
+  "include": ["src"]
 }

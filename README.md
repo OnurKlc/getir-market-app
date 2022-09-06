@@ -9,7 +9,7 @@ Before running the application, first you need to ensure the followings are inst
 - Node
 - json-server
 
-## Project Dependencies
+## Main Project Dependencies
 
 **@reduxjs/toolkit** - Helps managing the global state with a certain convention of writing Redux.
 
@@ -20,10 +20,6 @@ Helps running the app in the development mode and running the json-server in a s
 You need to install the package to your system globally.
 
 **styled-components** - Helps to create component based and semantically meaningful styles.
-
-**customize-cra** / **react-app-rewired** - Used for customizing babel and webpack configurations without ejecting.
-
-**react-app-alias** - Used for being able to import outside of the /src folder.
 
 **tailwindccss** - Helps styling with predefined classes and media queries.
 It provides easier theming with a root config file.
