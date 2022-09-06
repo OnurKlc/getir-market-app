@@ -30,7 +30,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(true)
 
   const getAllProducts = () => {
-    axios.get('http://localhost:3004/items').then((resp) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + '/items').then((resp) => {
       dispatch(setAllProductsData(resp.data))
     })
   }

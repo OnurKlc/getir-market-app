@@ -45,7 +45,7 @@ export default function Products() {
   const [itemType, setItemType] = useState()
 
   const getProducts = (_page = 1) => {
-    let url = `http://localhost:3004/items?_page=${_page}&_limit=16`
+    let url = `${process.env.REACT_APP_SERVER_URL}/items?_page=${_page}&_limit=16`
     if (orderData.sort) url += `&_sort=${orderData.sort}`
     if (orderData.order) url += `&_order=${orderData.order}`
     if (brandFilters.length) url += `&manufacturer=${brandFilters.join(',')}`
