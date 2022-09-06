@@ -9,6 +9,11 @@ Before running the application, first you need to ensure the followings are inst
 - Node
 - json-server
 
+## Server
+
+- On development mode the server runs on http://localhost:3004
+- On production, server runs on a glitch server which is accessible from the url: https://familiar-global-pram.glitch.me
+
 ## Main Project Dependencies
 
 **@reduxjs/toolkit** - Helps managing the global state with a certain convention of writing Redux.
