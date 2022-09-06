@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import { SERVER_URL } from 'index'
 import { setProductsData } from 'store/products'
 import styled from 'styled-components'
 
@@ -45,7 +46,7 @@ export default function Products() {
   const [itemType, setItemType] = useState()
 
   const getProducts = (_page = 1) => {
-    let url = `${process.env.REACT_APP_SERVER_URL}/items?_page=${_page}&_limit=16`
+    let url = `${SERVER_URL}/items?_page=${_page}&_limit=16`
     if (orderData.sort) url += `&_sort=${orderData.sort}`
     if (orderData.order) url += `&_order=${orderData.order}`
     if (brandFilters.length) url += `&manufacturer=${brandFilters.join(',')}`

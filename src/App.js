@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { Basket, Brands, Header, Products, Sorting, Tags } from 'components'
+import { SERVER_URL } from 'index'
 import { setAllProductsData } from 'store/products'
 import { ThemeProvider } from 'styled-components'
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -30,7 +31,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(true)
 
   const getAllProducts = () => {
-    axios.get(process.env.REACT_APP_SERVER_URL + '/items').then((resp) => {
+    axios.get(SERVER_URL + '/items').then((resp) => {
       dispatch(setAllProductsData(resp.data))
     })
   }
